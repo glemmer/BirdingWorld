@@ -22,7 +22,7 @@ router.get('/', function (req, res) {
 router.post('/', (req, res) => {
     Location.findOne({'name': req.body.name}).then((docs) => {
       if(docs) {
-        return res.status(400).send("Location already exist");
+        return res.status(400).send("Location already exist for user");
       };
   
       var location = new Location({
