@@ -10,7 +10,7 @@ var {authenticate} = require('../middleware/authenticate');
 router.use(function timeLog (req, res, next) {
   console.log('Time: ', Date.now())
   next()
-})
+});
 // POST /users
 router.post('/', (req, res) => {
     var body = _.pick(req.body, ['email', 'password']);
@@ -23,11 +23,11 @@ router.post('/', (req, res) => {
     }).catch((e) => {
       res.status(400).send(e);
     })
-  })
+  });
   
   router.get('/me', authenticate, (req, res) => {
     res.send(req.user);
-  })
+  });
   
   // POST /users/login {email, password}
   router.post('/login', (req, res) => {
@@ -40,6 +40,6 @@ router.post('/', (req, res) => {
     }).catch((e) => {
       res.status(400).send();
     });
-  })
+  });
 
   module.exports = router;
